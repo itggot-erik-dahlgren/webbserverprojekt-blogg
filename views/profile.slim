@@ -2,8 +2,23 @@ a href="/" Start
 
 h1 #{user}
 
-p Detta är världens besta profilsida
+p Detta är världens bästa profilsida
 
 form action="post" method="POST"
     textarea name="textarea" cols="30" rows="10"
     input name="post1" placeholder="Post" type="submit"
+
+- posts.each do |e|
+        article
+            .controls  
+                a href="/profile/#{e["Post_Id"]}/edit_post" method="GET"
+                    i.material-icons edit
+                form action="/profile/#{e["Post_Id"]}/delete_post" method="POST" 
+                    button type="submit" value=""
+            div class="info"
+                label class="name" = "User: " + e["Username"]
+                br/
+                br/
+                label class="email" = e["Information"]
+                / label class="tel" = e["Post_Id"]
+                / label class="department" = e["User_Id"]
